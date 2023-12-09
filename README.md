@@ -33,6 +33,10 @@ Open the link to the website
 
 When you open the link you are greeted with a home page as below.
 
+![Alt text](/public/images/image.png)
+
+You can login to create you own posts. You can update and delte them whenever you decide to.
+
 Enjoy using the website !
 
 ## Credits
