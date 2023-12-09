@@ -31,6 +31,7 @@ a {
     text-decoration: none;
     font-weight: bold;
     transition: color .1s;
+    font-size: 1.5em;
 }
 
 button {
@@ -87,7 +88,7 @@ form label {
 .wrapper {
     width: 100%;
     min-height: 100%;
-    /* max-width: 1200px; */
+    font-size: 1.2em;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -228,8 +229,12 @@ main {
     margin-bottom: 5%;
 }
 
+#logout{
+    font-size: 1.5em;
+}
+
 #comment-subtitle {
-    font-size: 12px;
+    font-size: 15px;
     font-style: italic;
 }
 
@@ -239,7 +244,7 @@ main {
 }
 
 #create-new-post {
-    width: 15%;
+    width: 20%;
 }
 
 .sign-in-link,
