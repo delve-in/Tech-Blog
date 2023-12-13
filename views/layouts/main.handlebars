@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Tech Blog</title>
+    <title>Tech Blog</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="container">
         <header>
             <h1>
                 <a href="/">Home</a>
@@ -17,15 +17,15 @@
             <nav>
                 {{#if loggedIn}}
                 <a href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn-no-style logout">Logout</button>
+                <button id="logout" class="button-style logout">Logout</button>
                 {{else}}
                 <a href="/login">Login</a>
                 {{/if}}
             </nav>
         </header>
-        <div class="site-row">
-            <div class="site-name">
-                <h1>The Tech Blog</h1>
+        <div class="title-block">
+            <div class="title">
+                <h1>Tech Blog</h1>
             </div>
         </div>
         <main>

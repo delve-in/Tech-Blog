@@ -10,7 +10,7 @@ const withAuth = require('../../utils/auth');
 //Get all comments
 router.get("/", (req, res) => {
     Comment.findAll()
-        .then((dbCommentData) => res.json(dbCommentData))
+        .then((allComments) => res.json(allComments))
         .catch((err) => {
             console.log(err);
             res.status(500).json(err);
@@ -25,7 +25,7 @@ router.post('/', withAuth, (req, res) => {
                 post_id: req.body.post_id,
                 user_id: req.session.user_id
             })
-            .then(dbCommentData => res.json(dbCommentData))
+            .then(allComments => res.json(allComments))
             .catch(err => {
                 console.log(err);
                 res.status(400).json(err);

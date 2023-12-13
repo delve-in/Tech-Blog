@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             exclude: ['password']
         }
     })
-        .then(dbUserData => res.json(dbUserData))
+        .then(userData => res.json(userData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -42,14 +42,14 @@ router.get('/:id', (req, res) => {
         }
         ]
     })
-        .then(dbUserData => {
-            if (!dbUserData) {
+        .then(userData => {
+            if (!userData) {
                 res.status(404).json({
-                    message: 'No user found with this id'
+                    message: 'No user with this id'
                 });
                 return;
             }
-            res.json(dbUserData);
+            res.json(userData);
         })
         .catch(err => {
             console.log(err);
@@ -63,13 +63,13 @@ router.post('/', (req, res) => {
         username: req.body.username,
         password: req.body.password
     })
-        .then(dbUserData => {
+        .then(userData => {
             req.session.save(() => {
-                req.session.user_id = dbUserData.id;
-                req.session.username = dbUserData.username;
+                req.session.user_id = userData.id;
+                req.session.username = userData.username;
                 req.session.loggedIn = true;
 
-                res.json(dbUserData);
+                res.json(userData);
             });
         })
         .catch(err => {
@@ -80,18 +80,18 @@ router.post('/', (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const dbUserData = await User.findOne({
+        const userData = await User.findOne({
             where: {
                 username: req.body.username
             }
         });
-        if (!dbUserData) {
+        if (!userData) {
             res.status(400).json({
-                message: 'No user with that username!'
+                message: 'No user with this username!'
             });
             return;
         }
-        const validPassword = dbUserData.checkPassword(req.body.password);
+        const validPassword = userData.checkPassword(req.body.password);
 
         if (!validPassword) {
             res.status(400).json({
@@ -99,12 +99,12 @@ router.post('/login', async (req, res) => {
             });
             return;
         }
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
+        req.session.user_id = userData.id;
+        req.session.username = userData.username;
         req.session.loggedIn = true;
 
         res.json({
-            user: dbUserData,
+            user: userData,
             message: 'You are now logged in!'
         });
     }
